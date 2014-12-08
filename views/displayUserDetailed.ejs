@@ -1,0 +1,20 @@
+<% include header %>
+
+
+<% if(rs.length > 0) { %>
+<table>
+    <tr><th>AccountID</th><th>Email</th> <th>Username</th> <th>Password</th></tr>
+    <% for (var i=0; rs.length > i; i++) { %>
+    <tr>
+        <td><%= rs[i].AccountID %></td>
+        <td><%= rs[i].Email %></td>
+        <td><%= rs[i].Username %></td>
+        <td><%= rs[i].Password %></td>
+    </tr>
+    <% } %>
+</table>
+<% } else { %>
+No users are entered into the database.
+<% } %>
+
+<% include footer %>

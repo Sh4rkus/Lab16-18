@@ -1,0 +1,33 @@
+<%include header %>
+
+<% if(rs.length > 0) { %>
+
+<form method=”post” action= "/user/save">
+    <table>
+    <tr><td>Username:</td><td> <input type=”text” name=Username id=Username value=<%= rs[0].Username %> /></td></tr>
+    <tr><td>First Name:</td><td><input type=”text” name=fName id=fName value=<%= rs[0].fName %> /></td></tr>
+    <tr><td>Last Name:</td><td><input type=”text” name=lName id=lName value=<%= rs[0].lName %> /></td></tr>
+    <tr><td>Bio:</td><td><input type=”text” name=Bio id=Bio value=<%= rs[0].Bio %>></td></tr>
+
+
+    </table>
+    <input type = "hidden" name = AccountID id = AccountID value = <%=rs[0].AccountID %> />
+    <input type = "submit">
+</form>
+
+<table>
+    <tr><th>Posts</th></tr>
+    <% for (var i=0; rs.length > i; i++) { %>
+    <tr><td><%= rs[i].Message %></td></tr>
+    <% } %>
+</table>
+
+<% } else { %>
+No users are entered into the database.
+<% } %>
+
+<%include footer %>
+
+
+
+

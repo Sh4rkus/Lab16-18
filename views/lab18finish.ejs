@@ -1,0 +1,26 @@
+<% include header %>
+
+<% if(rs.length > 0) { %>
+
+<table>
+    <tr><th>Username</th><th>Email</th><th>First Name</th><th>Last Name</th></tr>
+    <tr><td><%= rs[0].Username %></td><td><%= rs[0].Email %></td><td><%= rs[0].fName %></td><td><%= rs[0].lName %></td></tr>
+</table>
+
+<p>Bio:  <%= rs[0].Bio %></p>
+<p>Number of Posts:  <%= rs[0].COUNT(t.Post) %></p>
+<p>Number of Followers: <%= rs[0].COUNT(f.FollowerID) %></p>
+<p>Average Number of ReTweets:  <%= rs[0].AVG(t.ReTweetCount)%></p>
+<p>Total Number of ReTweets:  <%= rs[0].SUM(t.ReTweetCount)%></p>
+
+<table>
+    <tr><th>Posts</th></tr>
+    <% for (var i=0; rs.length > i; i++) { %>
+    <tr><td><%= rs[i].Message %></td></tr>
+    <% } %>
+</table>
+
+
+<% } %>
+
+<% include footer %>

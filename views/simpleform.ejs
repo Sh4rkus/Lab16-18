@@ -1,0 +1,45 @@
+<% include header %>
+
+<h4>Either enter a new user to the database</h4>
+<form method="POST" action="/user/create">
+    <table id="login">
+        <tr><td>Email:</td>
+            <!-- name attribute must be provided for non ajax forms -->
+            <td><input type="text" id="email" name="email" /></td>
+        </tr>
+        <tr><td>Username:</td>
+            <td><input type="username" id="username" name="username" /></td>
+        </tr>
+        <tr><td>Password:</td>
+            <td><input type="password" id="password" name="password" /></td>
+        </tr>
+    </table>
+    <input type="submit">
+</form>
+
+</br>
+</br>
+
+<h4>Or choose a currently existing email to add multiple posts.</h4>
+<% if(rs.length > 0) { %>
+<form method="post" action="/user/post">
+    <label for="user">Email: </label>
+    <select id="user" name="user" class="form-control">
+        <% for (var i=0; rs.length > i; i++) { %>
+        <option value="<%= rs[i].AccountID %>">
+            <%= rs[i].Email %>
+        </option>
+        <% } %>
+    </select>
+    </br>
+    <tr><td>Post:&nbsp;&nbsp;&nbsp;  </td>
+        <td><textarea type="posts" id="posts" name="posts"></textarea> </td></tr>
+    </br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<% } else { %>
+No Pokemon are entered into the database.
+<% } %>
+
+<% include footer %>
